@@ -24,7 +24,6 @@ func task() {
 	for _, tasks := range taskList {
 		now := time.Now().Format("15:04")
 		executingTime := cfg.GetString(tasks + ".executing_time")
-		fmt.Println(now, executingTime)
 
 		if now == executingTime {
 			fmt.Printf("Running task %s", cfg.GetString(tasks+".description"))
