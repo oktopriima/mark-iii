@@ -6,7 +6,9 @@ import (
 	"github.com/oktopriima/mark-iii/services"
 )
 
-func UpdateExpired(cfg conf.Config) {
+func UpdateExpired() {
+	cfg := conf.NewConfig()
+
 	db, err := conf.MysqlConnection(cfg)
 	if err != nil {
 		fmt.Printf("someting when wrong : %s", err.Error())
@@ -26,6 +28,7 @@ func UpdateExpired(cfg conf.Config) {
 
 	for _, payment := range data {
 		payment.Status = "EXPIRED"
+
 		if err := paymentContract.UpdatePaymentStatus(payment, tx); err != nil {
 			fmt.Printf("someting when wrong : %s", err.Error())
 			return

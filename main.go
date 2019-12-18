@@ -9,7 +9,6 @@ import (
 )
 
 // how to make even scheduler with golang
-
 func main() {
 	schedule := gocron.NewScheduler()
 	schedule.Every(1).Minutes().Do(task)
@@ -33,10 +32,13 @@ func task() {
 }
 
 func chooseTask(task string) {
-	fmt.Println(task)
-	cfg := conf.NewConfig()
+
 	switch task {
 	case "update_expired_payment":
-		payment.UpdateExpired(cfg)
+		payment.UpdateExpired()
+	case "jobs_2":
+		// TO DO call some function
+	case "jobs_3":
+		// TO DO call some function
 	}
 }

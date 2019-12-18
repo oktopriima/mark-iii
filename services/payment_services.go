@@ -22,7 +22,8 @@ func NewPaymentServicesContract(db *gorm.DB) PaymentServiceContract {
 func (srv *paymentServicesContract) FindExpiredPayment() ([]*model.Payment, error) {
 	var data []*model.Payment
 
-	if err := srv.db.Where("status = ? AND expire_date < ?", "PENDING", time.Now()).Find(&data).Error; err != nil {
+	if err := srv.db.Where("status = ? AND expire_date < ?", "PENDING", time.Now()).
+		Find(&data).Error; err != nil {
 		return nil, err
 	}
 
