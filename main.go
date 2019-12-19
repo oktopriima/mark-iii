@@ -32,7 +32,6 @@ func task() {
 }
 
 func chooseTask(task string) {
-
 	switch task {
 	case "update_expired_payment":
 		payment.UpdateExpired()

@@ -4,9 +4,12 @@ import (
 	"fmt"
 	"github.com/oktopriima/mark-ii/conf"
 	"github.com/oktopriima/mark-iii/services"
+	"runtime"
 )
 
 func UpdateExpired() {
+	runtime.GOMAXPROCS(1)
+
 	cfg := conf.NewConfig()
 
 	db, err := conf.MysqlConnection(cfg)
